@@ -1,9 +1,11 @@
 import { View } from "react-native";
 import { AppText } from "@/components/AppText";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import { Button } from "@/components/Button";
 
 export default function IndexScreen() {
+
+  const router = useRouter();
   return (
     <View className="justify-center flex-1 p-4">
       <AppText center size="heading" bold >
@@ -24,6 +26,15 @@ export default function IndexScreen() {
       asChild >
         <Button title="Greet Jonny on /second" theme="secondary"/>
       </Link>
+        {/**Tambien se puede usar el router de expo para mas azucar sintactica */}
+        <Button title="Greet Sammy on /second"
+        theme="secondary"
+        onPress={()=>{router.push({
+            pathname: "/second",
+            params: {name: "Sammy"}
+          })
+        }}/>
+
     </View>
   );
 
